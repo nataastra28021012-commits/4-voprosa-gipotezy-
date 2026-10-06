@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивное Задание</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            font-size: 18px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+            overflow: hidden;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+            padding-left: 12px;
+        }
+        .question {
+            background-color: #42A1A5;
+            color: white;
+            width: 10%;
+        }
+        .nowrap {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 20%;
+        }
+        .details {
+            white-space: normal;
+            max-width: 300px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleDetails(index) {
+            const detailsCols = document.querySelectorAll(`.details[data-index='${index}']`);
+            detailsCols.forEach(detail => {
+                if (detail.classList.contains('hidden')) {
+                    detail.classList.remove('hidden');
+                } else {
+                    detail.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1 style="font-size: 18px;">Четыре вопроса для проверки гипотезы</h1>
+    <p>Нажми на каждый вопрос, чтобы узнать подробнее</p>
+    <table>
+        <tr>
+            <th class="nowrap">Вопрос</th>
+            <th>Что должно быть в ответе</th>
+            <th>Пример</th>
+        </tr>
+        <tr onclick="toggleDetails(0)">
+            <td class="nowrap question">1. Чьё<br>поведение меняем?</td>
+            <td class="details hidden" data-index="0">Субъект — конкретная роль/группа людей, не «мы», не «процесс» и не «система».</td>
+            <td class="details hidden" data-index="0">Менеджер по продажам:<br>делает больше результативных звонков в день.</td>
+        </tr>
+        <tr onclick="toggleDetails(1)">
+            <td class="nowrap question">2. Почему это<br> должно сработать?</td>
+            <td class="details hidden" data-index="1">Есть внятное «потому что», опирающееся на мотивацию/барьер субъекта.</td>
+            <td class="details hidden" data-index="1">Потому что менеджеру не нужно тратить ~15 минут на подготовку к каждому звонку — скрипт и триггеры уже в CRM.</td>
+        </tr>
+        <tr onclick="toggleDetails(2)">
+            <td class="nowrap question">3. Как это<br> влияет на цель?</td>
+            <td class="details hidden" data-index="2">Понятная связка: изменение поведения → промежуточная метрика → метрика цели.</td>
+            <td class="details hidden" data-index="2">Больше результативных звонков → больше назначенных встреч → рост выручки отдела (при контроле CAC и NPS).</td>
+        </tr>
+        <tr onclick="toggleDetails(3)">
+            <td class="nowrap question">4. Проверяемо<br>ли за 1–2 недели?</td>
+            <td class="details hidden" data-index="3">Есть быстрый тест и измеримый сигнал; если нужен месяц — дроби гипотезу или упрощай проверку.</td>
+            <td class="details hidden" data-index="3">Тест на 5 менеджерах 2 недели, сигнал: результативные звонки ≥ +30% в тестовой группе.</td>
+        </tr>
+    </table>
+</body>
+</html>
